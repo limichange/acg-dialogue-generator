@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <canvas width="1000" height="800" id="c"></canvas>
+    <button @click="addText">添加文本</button>
   </div>
 </template>
 
@@ -13,10 +14,13 @@ export default {
   name: 'app',
   data () {
     return {
+      canvas: {}
     }
   },
   mounted () {
     const canvas = new fabric.Canvas('c')
+
+    this.canvas = canvas
 
     fabric.Image.fromURL(demo2Img, img => {
       canvas.add(img)
@@ -26,6 +30,7 @@ export default {
       canvas.add(red)
       canvas.add(oImg)
       canvas.add(text40)
+      canvas.add(text2)
 
       this.saveImage(canvas.toDataURL({
         format: 'jpeg'
@@ -36,11 +41,25 @@ export default {
       top: 100, left: 0, width: 80, height: 50, fill: 'gray'
     })
 
-    var text40 = new fabric.Text("我\n是\n不\n信\n的", {
-      fontSize: 40
+    var text40 = new fabric.IText("老子天下第一👌", {
+      fontFamily: 'arial black',
+      fontSize: 20
+    })
+
+    var text2 = new fabric.IText("我是不信的", {
+      fontFamily: 'arial black',
+      fontSize: 30
     })
   },
   methods: {
+    addText () {
+      const text = new fabric.IText("老子天下第一👌", {
+        fontFamily: 'arial black',
+        fontSize: 20
+      })
+
+      this.canvas.add(text)
+    },
     saveImage(yourDataURL) {
       function dataURIToBlob(dataURI, callback) {
         var binStr = atob(dataURI.split(',')[1]),
