@@ -59,3 +59,7 @@ typings/
 
 .cache
 dist
+
+build
+.DS_Store
+dist
