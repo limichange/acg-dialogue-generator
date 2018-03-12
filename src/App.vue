@@ -7,6 +7,7 @@
 <script>
 import { fabric } from 'fabric'
 import demoImg from './images/demo.png'
+import demo2Img from './images/demo2.png'
 
 export default {
   name: 'app',
@@ -16,6 +17,10 @@ export default {
   },
   mounted () {
     const canvas = new fabric.Canvas('c')
+
+    fabric.Image.fromURL(demo2Img, img => {
+      canvas.add(img)
+    })
 
     fabric.Image.fromURL(demoImg, (oImg) => {
       canvas.add(red)
@@ -31,7 +36,7 @@ export default {
       top: 100, left: 0, width: 80, height: 50, fill: 'gray'
     })
 
-    var text40 = new fabric.Text("一\n群\n死\n宅", {
+    var text40 = new fabric.Text("我\n是\n不\n信\n的", {
       fontSize: 40
     })
   },
